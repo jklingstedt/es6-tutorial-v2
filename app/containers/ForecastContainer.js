@@ -21,12 +21,12 @@ class ForecastContainer extends Component {
 
     makeRequest(city) {
         getForcast(city)
-            .then(function (forecastData) {
+            .then((forecastData) => {
                 this.setState({
                     isLoading: false,
                     forecastData: forecastData
                 });
-            }.bind(this));
+            });
     };
 
     handleClick(weather) {
