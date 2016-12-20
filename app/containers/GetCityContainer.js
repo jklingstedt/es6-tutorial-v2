@@ -1,6 +1,6 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var GetCity = require('../components/GetCity');
+import GetCity from '../components/GetCity'
 
 var GetCityContainer = React.createClass({
   contextTypes: {

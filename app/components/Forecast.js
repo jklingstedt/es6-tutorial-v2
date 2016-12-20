@@ -1,10 +1,8 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var utils = require('../helpers/utils');
-var getDate = utils.getDate;
-import DayItem  from './DayItem'
+import React, {PropTypes} from 'react'
+import utils, {getDate} from '../helpers/utils'
+import DayItem from './DayItem'
 
-var styles = {
+const styles = {
   container: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -29,9 +27,9 @@ var styles = {
   }
 }
 
-function ForecastUI (props) {
+function ForecastUI(props) {
   return (
-    <div style={{textAlign: 'center'}}>
+    <div style={{ textAlign: 'center' }}>
       <h1 style={styles.header}>{props.city}</h1>
       <p style={styles.subheader}>Select a day</p>
       <div style={styles.container}>
@@ -43,16 +41,16 @@ function ForecastUI (props) {
   )
 }
 
-function Forecast (props) {
+function Forecast(props) {
   return (
     <div>
       {
         props.isLoading === true
           ? <h1 style={styles.header}> Loading </h1>
           : <ForecastUI
-              city={props.city}
-              forecast={props.forecastData}
-              handleClick={props.handleClick} />
+            city={props.city}
+            forecast={props.forecastData}
+            handleClick={props.handleClick} />
       }
     </div>
   )
@@ -65,4 +63,4 @@ Forecast.propTypes = {
   isLoading: PropTypes.bool.isRequired
 }
 
-module.exports = Forecast;
+export default Forecast;

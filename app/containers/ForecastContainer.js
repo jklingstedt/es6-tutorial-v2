@@ -1,5 +1,5 @@
 var React = require('react');
-var Forecast = require('../components/Forecast');
+import Forecast from '../components/Forecast'
 var getForcast = require('../helpers/api').getForcast;
 
 var ForecastContainer = React.createClass({

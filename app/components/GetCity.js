@@ -1,58 +1,59 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, {PropTypes} from 'react'
 
-function Button (props) {
-  return (
-    <button type='button'
-      style={{margin: 10}}
-      className='btn btn-success'
-      onClick={props.onSubmitCity}>
-        {props.children}
-    </button>
-  )
+function Button({children, onSubmitCity}) {
+    return (
+        <button type='button'
+            style={{ margin: 10 }}
+            className='btn btn-success'
+            onClick={onSubmitCity}>
+            {children}
+        </button>
+    )
 }
 
-function InputField (props) {
-  return (
-    <input
-      className='form-control'
-      onChange={props.onUpdateCity}
-      placeholder='St. George, Utah'
-      type='text'
-      value={props.city} />
-  )
+function InputField({onUpdateCity, city}) {
+    return (
+        <input
+            className='form-control'
+            onChange={onUpdateCity}
+            placeholder='St. George, Utah'
+            type='text'
+            value={city} />
+    )
 }
 
-function getStyles (props) {
-  return {
-    display: 'flex',
-    flexDirection: props.direction || 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    maxWidth: 300,
-    alignSelf: 'right'
-  }
+function getStyles({direction}) {
+    return {
+        display: 'flex',
+        flexDirection: direction || 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        maxWidth: 300,
+        alignSelf: 'right'
+    }
 }
 
-function GetCity (props) {
-  return (
-    <div style={getStyles(props)}>
-      <InputField
-        onUpdateCity={props.onUpdateCity}
-        city={props.city} />
-      <Button
-        onSubmitCity={props.onSubmitCity}>
-          Get Weather
-      </Button>
-    </div>
-  )
+function GetCity({direction, city, onUpdateCity, onSubmitCity}) {
+    return (
+        <div style={getStyles(direction)}>
+            <form onSubmit={onSubmitCity}>
+                <InputField
+                    onUpdateCity={onUpdateCity}
+                    city={city} />
+                <Button
+                    onSubmitCity={onSubmitCity}>
+                    Get Weather
+                </Button>
+            </form>
+        </div>
+    )
 }
 
 GetCity.propTypes = {
-  direction: PropTypes.string,
-  onSubmitCity: PropTypes.func.isRequired,
-  onUpdateCity: PropTypes.func.isRequired,
-  city: PropTypes.string.isRequired
+    direction: PropTypes.string,
+    onSubmitCity: PropTypes.func.isRequired,
+    onUpdateCity: PropTypes.func.isRequired,
+    city: PropTypes.string.isRequired
 }
 
-module.exports = GetCity;
+export default GetCity;
